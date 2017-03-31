@@ -15,4 +15,4 @@ rut:
 	./rv-2-rka -t
 
 clean:
-	rm -rf rv-2-rka *.o *.hi
+	rm -rf rv-2-rka *.o *.hi Parser/*.o Parser/*.hi Type/*.o Type/*.hi
