@@ -2,3 +2,9 @@
 *.in
 
 *.out
+
+*.hi
+
+*.o
+
+rv-2-rka
