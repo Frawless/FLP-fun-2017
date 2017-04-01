@@ -9,8 +9,6 @@
 module Type.RKA
     where
 
-import Data.Foldable
-
 -- Strom pro RV
 data Tree
   = Symbol Char

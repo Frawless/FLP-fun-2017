@@ -36,13 +36,12 @@ main = do
         Left err -> putStrLn err
         Right args -> handleArgs args
 
--- Hlavní obslužná funkce pro zpracování vstupního RV
+-- Získání argumentů ze struktury a spuštění hlavní části programu
 handleArgs :: Config -> IO ()
 handleArgs Config{..} = processRV action regularExp
         --CreateRKA -> createRKA regularExp
 
--- Funkce pro převedení vstupu na standartní RV
--- Přepínač -r
+-- Hlavní obslužná funkce pro zpracování vstupního RV
 processRV :: CAction -> String -> IO()
 processRV action [] = do
     input <- getLine
@@ -57,10 +56,7 @@ processRV action fileName = do
         True -> parseRV action fileName
     where parseRV action fileName = do
             input <- readFile fileName
-            --putStrLn ("Vstupní RV v postfixovém tvaru: "++ input)
             case action of
                 CreateRV -> createPostFix input
                 CreateRKA -> createRKA input
-
-
 -- ******************************************************************************************************************
