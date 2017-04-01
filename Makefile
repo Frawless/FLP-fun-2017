@@ -4,8 +4,8 @@
 # Soubor: Makefile
 # Popis: Skript pro přeložení vytvořené aplikace v jazyce Haskell
 
-LOGIN = xstejs24
-PACK = Parser/*.hs Type/*.hs *.hs Makefile Readme.txt tests
+LOGIN = flp-fun-xstejs24
+PACK = Parser/*.hs Type/*.hs *.hs Makefile Tests README
 
 all:
 	ghc --make rv-2-rka.hs
@@ -24,4 +24,5 @@ test:
 
 pack:
 	rm -f $(LOGIN).zip
+	make clean
 	zip -r $(LOGIN).zip $(PACK)

@@ -46,17 +46,33 @@ cd Tests
 mkdir diff
 mkdir output
 
-# Testování
+# Testování -r
 x=$(ls input/ -1 | wc -l)	# Počet testů
+for ((i=1; i <= x; i++))
+do
+	./../rv-2-rka -r ${INPUT}$i > ${OUTPUT}$i
+	head -c -1 ${OUTPUT}$i > ${OUTPUT}_r$i
+	rm ${OUTPUT}$i
+	diff -u ${INPUT}$i ${OUTPUT}_r$i > diff/diff_r$i
+	if [ $? = 0 ]
+		then
+			echo -e "${green}Test_r ${i} PASS! -> in: $(cat ${INPUT}$i)"
+		else
+			echo -e "${red}Test_r ${i} FAIL -> in: $(cat ${INPUT}$i) - check diff/diff_r$i"
+		fi
+		echo -e "${NC}----------------------"
+done
+
+# Testování -t
 for ((i=1; i <= x; i++))
 do
 	./../rv-2-rka -t ${INPUT}$i > ${OUTPUT}$i
 	diff -u ${REF}$i ${OUTPUT}$i > diff/diff$i
 	if [ $? = 0 ]
 		then
-			echo -e "${green}Test ${i} PASS! -> in: $(cat ${INPUT}$i)"
+			echo -e "${green}Test_t ${i} PASS! -> in: $(cat ${INPUT}$i)"
 		else
-			echo -e "${red}Test ${i} FAIL -> in: $(cat ${INPUT}$i) - check diff/diff$i"
+			echo -e "${red}Test_t ${i} FAIL -> in: $(cat ${INPUT}$i) - check diff/diff$i"
 		fi
 		echo -e "${NC}----------------------"
 done

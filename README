@@ -1,0 +1,37 @@
+Projekt: FLP-fun-2017
+Autor: Bc. Jakub Stejskal, xstejs24
+Předmět: FLP
+Popis: Skript převádí ze vstupu (soubor/stdin) zadaný regulární výraz na rozšířený konečný automat. Byl využit algoritmus probíraný v předmětu TIN (opora kapitola 3.4). Výsledký KA obsahuje epsilon přechody, nebyla prováděna žádná optimaliazce v podobě minimalizace z RKA, tudíž výsledné RKA se tvoří analogicky dle algoritmu v opoře.
+
+Skript nejprve zpracuje zadaný rv do vnitřní reprezentace v podobě stromu. Přepínač -r poté zrekonstruuje zpět postfixovou notaci jako byla na vstupu. Přepínač -t vytvoří ze stromu RKA.
+
+Vstup: Vstup je potřeba zadat bez znaku konce řádku (zahrnuje pouze vstupy ze souboru, stdin je zpracován bez něho).
+
+Chybové výstupy: V případě špatného rv a stromu je vypsána chybová hláška pomocí monády Either.
+
+Testy: K implementaci "rv-2-rka" jsou připojeny testy. Spuštění pomocí 'make test'. Provede se překlad a zkontroluje se výstup programu s ručně zadaným výstupem v adresáři "Tests/ref_out" pro přepínač -t. Pro přepínač -r se výstup skriptu porovná se vstupem (indentita jak bylo zmíněno na fóru FLP). Pro další testy je nutné přidat vstup do adresáře "Tests/input/" a referenční výstup do "Tests/ref_out/".
+
+Testovací regulární výrazy:
+1: (Prázdný rv)
+2: k
+3: ab.
+4: a*
+5: p***
+6: g*h*.
+7: zx*.a.
+8: bc+dx++
+9: ab+c+d+
+10: x*ab+c+.
+11: ab.cd.+*
+12: ba*.a+
+13: ab+*ab.b..
+14: bc+dx++x*.
+15: xc+*wz+*+*z.
+16: bb*.a.ac.b*.+
+17: a*x.y.z.w.a*b*+.
+18: xy.cd.e.+*ab*.*+
+19: h*i*+z.a*.gh+.
+20: cd.aa.bb.+*abb...+
+21: pq*.r.s.t.u*.jk.l.m.+
+
+Vytvořená implementace prošla všemi testy (42 testů). Testováno na školním serveru Merlin.
