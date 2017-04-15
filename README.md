@@ -1,4 +1,4 @@
-#FLP-fun-2017
+# FLP-fun-2017
 ## Repozitář pro školní projekt do předmětu FLP.
 
 Nástroj pro vytvoření rozšířeného konečného automatu ze zadaného regulárního výrazu.
